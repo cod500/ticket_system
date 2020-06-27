@@ -1,0 +1,139 @@
+$(document).ready(function () {
+
+    let deleteBtns = document.querySelectorAll('.delete-btn');
+    let submitBtns = document.querySelectorAll('.submit-btn');
+
+
+    // Loops through .delete-btn class to delete row clicked
+    deleteBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            let row = e.target.id.substr(11, 1);
+            console.log(row)
+            if (!confirm('Confirm Deletion?')) return false
+            document.getElementById(row).remove();
+
+            // Send post request to delete specific ticket from row
+            $.ajax({
+                type: "DELETE",
+                url: "/delete/" + row,
+                dataType: "json",
+                data: { delete: row },
+                success: function (res) {
+                    console.log("Callback done!", res);
+                }
+            });
+        });
+    });
+
+    //Confirms submite and send data via ajax
+    submitBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            let row = e.target.id.substr(11, 5);
+            if (!confirm('Confirm Submit?')) return false
+            document.getElementById(e.target.id).style.cssText = "background-color: #C0C0C0";
+            document.getElementById(e.target.id).innerHTML = 'Closed';
+
+            // Send post request to delete specific ticket from row
+            $.ajax({
+                type: "PUT",
+                url: "/submit/" + row,
+                dataType: "json",
+                data: { status: row },
+                success: function (res, status) {
+                    console.log("Callback done!");
+                }
+            });
+        });
+    });
+
+
+    // let toggleChart = document.querySelector('.show-chart-btn');
+    let chart = document.querySelector('.chart-container');
+    let rows = document.querySelector('.ticket-table');
+
+    $('.show-chart-btn').click(function () {
+        $('.chart-container').toggleClass('toggle-chart');
+        $('tbody tr:nth-last-child(-n+4)').toggle();
+        $('.show-chart-container p').html() == "Show Proficiency Chart" ? $('.show-chart-container p').html('Hide Chart') :
+            $('.show-chart-container p').html("Show Proficiency Chart");
+    });
+
+
+
+    //Hide full table in mobiel view
+    let toggleTable = function () {
+        let windowWidth = document.body.clientWidth;
+
+        if (windowWidth < 1050) {
+
+            $("td:not(:nth-child(1)").hide();
+
+            $('.expand-btn').click(function () {
+                $(this).closest('tr').toggleClass('.collapsed');
+
+                console.log(this)
+
+                if ($(this).closest('tr').hasClass('.collapsed')) {
+                    $(this).closest('tr').children().slice(1).show();
+                } else {
+                    $(this).closest('tr').children().slice(1).hide()
+                }
+            });
+        } else {
+            $("td:not(:nth-child(1)").show();
+        }
+
+    };
+
+    $(window).resize(function () {
+        toggleTable();
+    });
+    //Fire it when the page first loads:
+    toggleTable();
+
+
+    // Show and Hide top ,emu on resize 
+    $(window).on('resize', function () {
+        var win = $(this); //this = window
+        if (win.height() > 900) {
+            $('.nav-top').css('display', 'flex');
+        }
+
+        if (win.width() < 900) {
+            $('.nav-top').hide();
+        }
+
+    });
+
+    //Hide and show mobile menu on click
+    $('.dropdown-icon').click(() => {
+        if ($('.nav-top').css('display') == 'none') {
+            $('.nav-top').css('display', 'flex');
+        } else {
+            $('.nav-top').css('display', 'none');
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+
