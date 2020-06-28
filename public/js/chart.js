@@ -2,15 +2,6 @@ fetch('/chart')
     .then(response => response.json())
     .then(data => {
 
-        let start = moment(new Date(data[2].date_added)).format('DD.MM.YYYY HH:mm:ss');
-        let end = moment(new Date(data[2].date_closed)).format('DD.MM.YYYY HH:mm:ss');
-
-        let todayDate = moment(start, "DD.MM.YYYY HH:mm:ss");
-        let endDate = moment(end, "DD.MM.YYYY HH:mm:ss");
-
-        let result = endDate.diff(todayDate, 'hours');
-        console.log(result)
-
         let chartData = [{ value: 0, count: 0 }, { value: 0, count: 0 }, { value: 0, count: 0 }];
 
         if (data.length == 0) {
