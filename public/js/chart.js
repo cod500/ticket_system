@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/chart')
+fetch('/chart')
     .then(response => response.json())
     .then(data => {
 
