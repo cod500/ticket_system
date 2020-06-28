@@ -10,7 +10,7 @@ router.get('/add', auth, async (req, res) => {
 // Add trouble ticket so database
 router.post('/add', auth, async (req, res) => {
     try {
-        const newTicket = await pool.query("INSERT INTO tickets (title, priority, submitted_by, details, date_added) VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP)",
+        const newTicket = await pool.query(`INSERT INTO tickets (title, priority, submitted_by, details, date_added) VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP)`,
             [req.body.title, req.body.priority, req.body.employee, req.body.details]);
 
         req.flash("success", "Ticket Added!");
