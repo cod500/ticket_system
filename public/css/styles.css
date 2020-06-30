@@ -573,13 +573,19 @@ td {
 }
 
 /******************** Mobile *********************/
+@media (max-width: 350px){
+  .nav-bar .nav-options li a{
+    font-size: 15px;
+  }
+}
 
 @media (max-width: 615px) {
   /* Login and Registration page  */
 
   .msg-container .success-msg {
-    font-size: 10px;
+    font-size: 8px;
     padding: 0;
+    margin: 0;
   }
 
   .banner {
@@ -598,9 +604,13 @@ td {
   }
 
   .form-container {
-    width: 300px;
-    height: 400px;
-    top: 30%;
+    position: relative;
+    width: 80%;
+    height: 300px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
   }
 
   .form-container h2 {
@@ -608,19 +618,24 @@ td {
   }
 
   .form-container .form-input {
-    width: 200px;
-    padding: 5px;
+    width: 95%;
+  }
+
+  .log-in-form{
+    height: 350px;
+    margin: auto;
   }
 
   .log-in-form input[type="submit"] {
     display: block;
-    width: 100px;
+    width: 50%;
     margin: auto;
     font-size: 12px;
   }
 
   .register-form {
-    top: -400%;
+    position: relative;
+    height: 350px;
   }
 
   .register-btn {
@@ -630,13 +645,15 @@ td {
   .register-form input[type="submit"] {
     margin: auto;
     display: block;
-    width: 100px;
+    width: 80px;
     margin: auto;
     font-size: 12px;
   }
 
   .register-form .form-input {
     font-size: 12px;
+    padding: 0;
+    margin: 20px;
   }
 }
 
@@ -673,6 +690,12 @@ td {
   .nav-bar .dropdown-icon a {
     color: #fff;
     text-decoration: none;
+  }
+}
+
+@media (max-width: 970px) {
+  .nav-bar .nav-options {
+    justify-content: center;
   }
 }
 
@@ -764,9 +787,10 @@ td {
 
   /* Add ticket mobile page */
   .add-ticket-form {
-    width: 350px;
-    height: 450px;
-    top: 55%;
+    position: relative;
+    width: 75%;
+    height: 80%;
+    top: 45%;
     left: 50%;
     background-color: #232328;
     text-align: center;
@@ -783,7 +807,7 @@ td {
 
   .add-ticket-form input[type="text"] {
     font-size: 12px;
-    width: 250px;
+    width: 70%;
     padding: 0px;
     margin: 15px;
   }
@@ -809,6 +833,10 @@ td {
     margin-bottom: 10px;
   }
 
+  textarea{
+    width: 70%;
+  }
+
   .cencel-btn {
     font-size: 12px;
   }
@@ -824,7 +852,7 @@ td {
 
   .footer ul li {
     width: 33%;
-    font-size: 15px;
+    font-size: 10px;
   }
 
   .footer p {
@@ -832,8 +860,3 @@ td {
   }
 }
 
-@media (max-width: 970px) {
-  .nav-bar .nav-options {
-    justify-content: center;
-  }
-}

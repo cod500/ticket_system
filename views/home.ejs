@@ -1,221 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="icon" type="image/x-icon" href="/img/ticket.png" />
-    <title>Trouble Ticket</title>
-  </head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="/css/styles.css"/>
+        <link rel="icon" type="image/x-icon" href="/img/ticket.png"/>
+        <title>Trouble Ticket</title>
+    </head>
 
-  <body>
-    <div class="j-h1"></div>
-    <div class="home-container">
-      <nav class="nav-bar">
-        <div class="ticket-logo">
-          <img src="/img/ticket.png" alt="" />
-          <h1>Trouble Ticket Management</h1>
-        </div>
-
-        <div class="dropdown-icon">
-          <a class="toggle-menu" href="javascript:void(0);">&#9776;</a>
-        </div>
-
-        <ul class="nav-top" id="top-nav">
-          <li>
-            <a href="/home"><i class="fa fa-ticket"></i>Home</a>
-          </li>
-          <li>
-            <a href="/add"><i class="fa fa-plus-square"></i>Add Ticket</a>
-          </li>
-
-          <li>
-            <a href="#"><i class="fa fa-bell"></i>Notifications</a> <% if (user)
-            { %>
-          </li>
-
-          <li>
-            <a href="/user/logout"><i class="fa fa-sign-out"></i>Sign Out</a>
-            <%} else { %>
-          </li>
-
-          <li>
-            <a href="/"><i class="fa fa-sign-out"></i>Sign In</a>
-            <% } %>
-          </li>
-        </ul>
-
-        <ul class="nav-options">
-          <li><a href="/home">All</a></li>
-          <li><a href="/home?status=open">Open</a></li>
-          <li><a href="/home?status=closed">Closed</a></li>
-          <li><a href="/add">Add Ticket</a></li>
-        </ul>
-      </nav>
-
-      <div class="msg-container">
-        <p class="success-msg"><%= success%></p>
-        <% if (!user) { %>
-        <p class="demo-msg">
-          <i class="fa fa-asterisk" aria-hidden="true"></i> Adding, Submitting,
-          and Deleting Are Disabled Unless Logged In.
-        </p>
-        <% } %>
-      </div>
-
-      <div class="ticket-container">
-        <div class="add-ticket-btn">
-          <button><a href="/add">Add Ticket</a></button>
-        </div>
-
-        <table class="ticket-table hide-rows">
-          <thead>
-            <th>Ticket No.</th>
-            <th>Date Added</th>
-            <th>Title</th>
-            <th>Priority</th>
-            <th>Submitted By</th>
-            <th>Details</th>
-            <th>Status</th>
-            <th>Date Closed</th>
-            <th>Delete</th>
-          </thead>
-          <tbody>
-            <% for(let i = 0; i < tickets.length; i++){ %> <% if
-            (tickets[i].priority == 'high') { %>
-            <tr class="high-priority" id="<%= tickets[i].number %>">
-              <% } else if (tickets[i].priority === 'medium') { %>
-            </tr>
-
-            <tr class="medium-priority" id="<%= tickets[i].number %>">
-              <% } else { %>
-            </tr>
-
-            <tr class="low-priority" id="<%= tickets[i].number %>">
-              <% } %>
-              <td data-label="Ticket No:">
-                <div class="expand-div">
-                  <p><%= tickets[i].number %></p>
-                  <button class="expand-btn">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </button>
+    <body>
+        <div class="j-h1"></div>
+        <div class="home-container">
+            <nav class="nav-bar">
+                <div class="ticket-logo">
+                    <img src="/img/ticket.png" alt=""/>
+                    <h1>Trouble Ticket Management</h1>
                 </div>
-              </td>
-              <td
-                data-label="Date Added"
-                class="date-added"
-                data-time="<%= moment(tickets[i].date_added).format('L') %>"
-              >
-                <%= moment(tickets[i].date_added).format("L") %>
-              </td>
-              <td data-label="Title:"><%= tickets[i].title %></td>
-              <td data-label="Priority:"><%= tickets[i].priority %></td>
-              <td data-label="Submitted By:"><%= tickets[i].submitted_by %></td>
-              <td data-label="Details:"><%= tickets[i].details %></td>
-              <% if (tickets[i].status == true) { %>
-              <td data-label="Status:">
-                <button
-                  class="submit-btn closed-btn"
-                  id="submit-btn-<%= tickets[i].number %>"
-                >
-                  Closed
-                </button>
-              </td>
-              <%} else { %> <% if (user) { %>
-              <td data-label="Status:">
-                <button
-                  class="submit-btn"
-                  id="submit-btn-<%= tickets[i].number %>"
-                >
-                  Submit
-                </button>
-              </td>
-              <%} else { %>
-              <td data-label="Status:">
-                <button
-                  class="submit-btn"
-                  id="submit-btn-<%= tickets[i].number %>"
-                  disabled
-                >
-                  Submit
-                </button>
-              </td>
-              <% } %> <% } %> <% if (!tickets[i].date_closed) { %>
-              <td data-label="Date Closed:">NA</td>
-              <%} else { %>
-              <td data-label="Date Closed:">
-                <%= moment(tickets[i].date_closed).format("L") %>
-              </td>
-              <% } %> <% if (user) { %>
-              <td data-label="Delete:">
-                <button
-                  class="delete-btn"
-                  id="delete-btn-<%= tickets[i].number %>"
-                >
-                  Delete
-                </button>
-              </td>
-              <%} else { %>
-              <td data-label="Delete:">
-                <button
-                  class="delete-btn"
-                  id="delete-btn-<%= tickets[i].number %>"
-                  disabled
-                >
-                  Delete
-                </button>
-              </td>
-              <% } %>
-            </tr>
+
+                <div class="dropdown-icon">
+                    <a class="toggle-menu" href="javascript:void(0);">&#9776;</a>
+                </div>
+
+                <ul class="nav-top" id="top-nav">
+                    <li>
+                        <a href="/home">
+                            <i class="fa fa-ticket"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="/add">
+                            <i class="fa fa-plus-square"></i>Add Ticket</a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bell"></i>Notifications</a>
+                        <% if (user)
+            { %>
+                        </li>
+                    </li>
+                    <li>
+                        <a href="/user/logout">
+                            <i class="fa fa-sign-out"></i>Sign Out</a>
+                <%} else { %>
+                    </li>
+
+                    <li>
+                        <a href="/">
+                            <i class="fa fa-sign-out"></i>Sign In</a>
+                    <% } %>
+                </li>
+            </ul>
+
+            <ul class="nav-options">
+                <li>
+                    <a href="/home">All</a>
+                </li>
+                <li>
+                    <a href="/home?status=open">Open</a>
+                </li>
+                <li>
+                    <a href="/home?status=closed">Closed</a>
+                </li>
+                <li>
+                    <a href="/add">Add Ticket</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="msg-container">
+            <p class="success-msg"><%= success%></p>
+            <% if (!user) { %>
+                <p class="demo-msg">
+                    <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    Adding, Submitting,
+                                                  and Deleting Are Disabled Unless Logged In.
+                </p>
             <% } %>
-          </tbody>
-        </table>
-
-        <div class="show-chart-container">
-          <p>Show Proficiency Chart</p>
-          <i class="fa fa-sort-down show-chart-btn"></i>
         </div>
-      </div>
 
-      <div class="chart-container">
-        <canvas id="myChart"></canvas>
-      </div>
+        <div class="ticket-container">
+            <div class="add-ticket-btn">
+                <button>
+                    <a href="/add">Add Ticket</a>
+                </button>
+            </div>
 
-      <footer class="footer">
-        <ul>
-          <li class="li">Home</li>
-          <li class="li">Contact</li>
-          <li class="li">Security</li>
-          <li class="li">Complaints</li>
-          <li class="li">Anti-spam Policy</li>
-          <li class="li">Terms of Service</li>
-          <li class="li">Privacy Policy</li>
-          <li class="li">Cookie Policy</li>
-          <li class="li">Compliance</li>
-          <li class="li">Abuse Policy</li>
-        </ul>
-        <p>&copy; 2020 All Rights Reserved.</p>
-      </footer>
-    </div>
+            <table class="ticket-table hide-rows">
+                <thead>
+                    <th>Ticket No.</th>
+                    <th>Date Added</th>
+                    <th>Title</th>
+                    <th>Priority</th>
+                    <th>Submitted By</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Date Closed</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    <% for(let i = 0; i < tickets.length; i++){ %>
+                        <% if
+            (tickets[i].priority == 'high') { %>
+                            <tr class="high-priority" id="<%= tickets[i].number %>">
+                        <% } else if (tickets[i].priority === 'medium') { %>
+                            </tr>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-    <script src="/js/moment.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="/js/home.js"></script>
-  </body>
-</html>
+                            <tr class="medium-priority" id="<%= tickets[i].number %>">
+                        <% } else { %>
+                            </tr>
+
+                            <tr class="low-priority" id="<%= tickets[i].number %>">
+                            <% } %>
+                            <td data-label="Ticket No:">
+                                <div class="expand-div">
+                                    <p><%= tickets[i].number %></p>
+                                    <button class="expand-btn">
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td data-label="Date Added" class="date-added" data-time="<%= moment(tickets[i].date_added).format('L') %>">
+                                <%= moment(tickets[i].date_added).format("L") %>
+                            </td>
+                            <td data-label="Title:"><%= tickets[i].title %></td>
+                            <td data-label="Priority:"><%= tickets[i].priority %></td>
+                            <td data-label="Submitted By:"><%= tickets[i].submitted_by %></td>
+                            <td data-label="Details:"><%= tickets[i].details %></td>
+                            <% if (tickets[i].status == true) { %>
+                                <td data-label="Status:">
+                                    <button class="submit-btn closed-btn" id="submit-btn-<%= tickets[i].number %>">
+                                        Closed
+                                    </button>
+                                </td>
+                            <%} else { %>
+                                <% if (user) { %>
+                                    <td data-label="Status:">
+                                        <button class="submit-btn" id="submit-btn-<%= tickets[i].number %>">
+                                            Submit
+                                        </button>
+                                    </td>
+                                <%} else { %>
+                                    <td data-label="Status:">
+                                        <button class="submit-btn" id="submit-btn-<%= tickets[i].number %>" disabled>
+                                            Submit
+                                        </button>
+                                    </td>
+                                <% } %>
+                            <% } %>
+                            <% if (!tickets[i].date_closed) { %>
+                                <td data-label="Date Closed:">NA</td>
+                            <%} else { %>
+                                <td data-label="Date Closed:">
+                                    <%= moment(tickets[i].date_closed).format("L") %>
+                                </td>
+                            <% } %>
+                            <% if (user) { %>
+                                <td data-label="Delete:">
+                                    <button class="delete-btn" id="delete-btn-<%= tickets[i].number %>">
+                                        Delete
+                                    </button>
+                                </td>
+                            <%} else { %>
+                                <td data-label="Delete:">
+                                    <button class="delete-btn" id="delete-btn-<%= tickets[i].number %>" disabled>
+                                        Delete
+                                    </button>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <div class="show-chart-container">
+                <p>Show Proficiency Chart</p>
+                <i class="fa fa-sort-down show-chart-btn"></i>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <footer class="footer">
+            <ul>
+                <li class="li">Home</li>
+                <li class="li">Contact</li>
+                <li class="li">Security</li>
+                <li class="li">Complaints</li>
+                <li class="li">Anti-spam Policy</li>
+                <li class="li">Terms of Service</li>
+                <li class="li">Privacy Policy</li>
+                <li class="li">Cookie Policy</li>
+                <li class="li">Compliance</li>
+                <li class="li">Abuse Policy</li>
+            </ul>
+            <p>&copy; 2020 All Rights Reserved.</p>
+        </footer>
+    </body>
+</html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script><script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script><script src="/js/moment.js"></script><script src="js/chart.js"></script><script src="/js/home.js"></script></body></html>
