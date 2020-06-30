@@ -370,6 +370,7 @@ td {
 }
 
 .submit-btn {
+  color: #232328;
   background-color: green;
   padding: 10px;
   outline: none;
