@@ -6,6 +6,7 @@
 
 body {
   position: relative;
+  overflow-x: hidden
 }
 
 .container {
@@ -273,6 +274,7 @@ body {
   align-content: center;
   background-color: #e5e4e2;
   height: 100%;
+  clear: both;
 }
 
 .msg-container .success-msg {
@@ -539,6 +541,7 @@ td {
 }
 
 .footer {
+  top: -1%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -714,6 +717,7 @@ td {
     width: 100%;
     box-shadow: none;
     height: 100vh;
+    padding-bottom: 860px;
   }
 
   .ticket-table thead {
@@ -858,6 +862,41 @@ td {
 
   .footer p {
     display: none;
+  }
+}
+
+@media (max-width: 400px){
+  .ticket-table tbody{
+    font-size: 10px;
+  }
+
+  .ticket-table td::before {
+    content: attr(data-label);
+   font-size: 10px;
+  }
+
+  .expand-btn {
+    font-size: 10px;
+    padding: 2px;
+    width: 20px;
+    left:100%;
+  }
+
+  .submit-btn {
+    font-size: 10px;
+    padding: 5px;
+
+  }
+  
+  .closed-btn {
+    font-size: 10px;
+    padding: 5px;
+ 
+  }
+  
+  .delete-btn {
+    font-size: 10px;
+    padding: 5px;
   }
 }
 
