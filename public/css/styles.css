@@ -9,14 +9,14 @@
 body {
   position: relative;
   overflow-x: hidden;
-  min-height: 100vh;
-  clear: both
+  min-height: fit-content;
 }
 
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #cc683c;
+  min-height: calc(100vh + 200px);
 }
 
 /* End of global styles */
@@ -658,7 +658,7 @@ body {
 @media (max-width: 1050px) {
   /* Home page with ticket and chart */
   .home-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     position: relative;
   }
