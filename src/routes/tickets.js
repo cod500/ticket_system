@@ -2,7 +2,24 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../../database/db');
 const { auth, isAuth } = require('../../auth/auth');
+const moment = require('moment');
 
+//Mobile single ticket page
+router.get('/ticket/:number', async (req, res) => {
+    try {
+        ticket = await pool.query("SELECT * FROM tickets WHERE number = $1", [req.params.number]);
+        console.log(ticket.rows[0])
+
+        res.render('single-ticket', {
+            ticket: ticket.rows[0],
+            moment
+        });
+    } catch (e) {
+        console.log(e)
+    }
+});
+
+//Add ticket page
 router.get('/add', auth, async (req, res) => {
     res.render('add-ticket');
 });
@@ -32,6 +49,7 @@ router.delete('/delete/:number', auth, async (req, res) => {
     }
 });
 
+// Close ticket 
 router.put('/submit/:number', auth, async (req, res) => {
     console.log(req.body.status);
     await pool.query("UPDATE tickets SET status = $1 WHERE number = $2",

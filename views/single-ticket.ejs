@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/img/ticket.png" />
+    <title>Trouble Ticket</title>
+</head>
+
+<body>
+    <div class="add-ticket-container">
+        <nav class="nav-bar">
+            <div class="ticket-logo">
+                <img src="/img/ticket.png" alt="" />
+                <h1>Trouble Ticket Management</h1>
+            </div>
+
+            <div class="dropdown-icon">
+                <a class="toggle-menu" href="javascript:void(0);">&#9776;</a>
+            </div>
+
+            <ul class="nav-top" id="top-nav">
+                <li>
+                    <a href="/home">
+                        <i class="fa fa-ticket"></i>Home</a>
+                </li>
+                <li>
+                    <a href="/add">
+                        <i class="fa fa-plus-square"></i>Add Ticket</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bell"></i>Notifications</a>
+                    <% if (user)
+            { %>
+                </li>
+                </li>
+                <li>
+                    <a href="/user/logout">
+                        <i class="fa fa-sign-out"></i>Sign Out</a>
+                    <%} else { %>
+                </li>
+
+                <li>
+                    <a href="/">
+                        <i class="fa fa-sign-out"></i>Sign In</a>
+                    <% } %>
+                </li>
+            </ul>
+
+            <ul class="nav-options">
+                <li>
+                    <a href="/home">All</a>
+                </li>
+                <li>
+                    <a href="/home?status=open">Open</a>
+                </li>
+                <li>
+                    <a href="/home?status=closed">Closed</a>
+                </li>
+                <li>
+                    <a href="/add">Add Ticket</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="single-ticket">
+            <% if (ticket.priority == 'high') { %>
+            <div class="high-priority">
+                <% } else if (ticket.priority === 'medium') { %>
+
+                <div class="medium-priority">
+                    <% } else { %>
+
+                    <div class="low-priority">
+                        <% } %>
+                        <h2>Ticket No: <%= ticket.number %></h2>
+                        <div>
+                            <label for="title">Title</label>
+                            <p><%= ticket.title %></p>
+                        </div>
+                        <div>
+                            <label for="employee">Submitted By</label>
+                            <p><%= ticket.submitted_by %></p>
+                        </div>
+
+                        <div>
+                            <label for="details">Details</label>
+                            <p><%= ticket.details %></p>
+                        </div>
+
+                        <div>
+                            <label for="priority">Ptiority</label>
+                            <p><%= ticket.priority %></p>
+                        </div>
+
+                        <div>
+                            <label for="priority">Date Added: </label>
+                            <p> <%= moment(ticket.date_added).format("L") %></p>
+                        </div>
+
+                        <div>
+                            <label for="priority">Date Closed: </label>
+                            <% if (!ticket.date_closed) { %>
+                            <p> NA</p>
+                            <%} else { %>
+                            <p> <%= moment(ticket.date_closed).format("L") %> </p>
+                            <% } %>
+                        </div>
+                        <div class="single-ticket-btn">
+                            <% if (ticket.status == true) { %>
+                            <button class="submit-btn closed-btn" id="submit-btn-<%= ticket.number %>">
+                                Closed
+                            </button>
+                            <%} else { %> <% if (user) { %>
+                            <button class="submit-btn" id="submit-btn-<%= ticket.number %>">
+                                Submit
+                            </button>
+                            <%} else { %>
+                            <button class="submit-btn" id="submit-btn-<%= ticket.number %>" disabled>
+                                Submit
+                            </button>
+                            <% } %>
+                            <% } %>
+
+                            <% if (user) { %>
+                            <button class="delete-btn" id="single-ticket-<%= ticket.number %>">
+                                Delete
+                            </button>
+                            <%} else { %>
+                            <button class="delete-btn" disabled>Delete</button>
+                            <% } %>
+                        </div>
+                        <button class="cancel-btn">
+                            <a href="/home">Back</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="footer">
+            <ul>
+                <li class="li">Home</li>
+                <li class="li">Contact</li>
+                <li class="li">Security</li>
+                <li class="li">Complaints</li>
+                <li class="li">Anti-spam Policy</li>
+                <li class="li">Terms of Service</li>
+                <li class="li">Privacy Policy</li>
+                <li class="li">Cookie Policy</li>
+                <li class="li">Compliance</li>
+                <li class="li">Abuse Policy</li>
+            </ul>
+            <p>&copy; 2020 All Rights Reserved.</p>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+        <script src="/js/home.js"></script>
+</body>
+
+</html>

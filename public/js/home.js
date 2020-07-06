@@ -7,21 +7,40 @@ $(document).ready(function () {
     // Loops through .delete-btn class to delete row clicked
     deleteBtns.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
-            let row = e.target.id.substr(11, 1);
-            console.log(row)
-            if (!confirm('Confirm Deletion?')) return false
-            document.getElementById(row).remove();
 
-            // Send post request to delete specific ticket from row
-            $.ajax({
-                type: "DELETE",
-                url: "/delete/" + row,
-                dataType: "json",
-                data: { delete: row },
-                success: function (res) {
-                    console.log("Callback done!", res);
-                }
-            });
+            if (e.target.id.substring(0, 13) === 'single-ticket') {
+                let row = e.target.id.substr(14);
+                if (!confirm('Confirm Deletion?')) return false;
+
+                // Send post request to delete specific ticket from row
+                $.ajax({
+                    type: "DELETE",
+                    url: "/delete/" + row,
+                    dataType: "json",
+                    data: { delete: row },
+                    success: function (res) {
+                        console.log("Callback done!", res);
+                        window.location.href = "/";
+                    }
+                });
+
+            } else {
+                let row = e.target.id.substr(11);
+                console.log(e.target.id)
+                if (!confirm('Confirm Deletion?')) return false
+                document.getElementById(row).remove();
+
+                // Send post request to delete specific ticket from row
+                $.ajax({
+                    type: "DELETE",
+                    url: "/delete/" + row,
+                    dataType: "json",
+                    data: { delete: row },
+                    success: function (res) {
+                        console.log("Callback done!", res);
+                    }
+                });
+            }
         });
     });
 
@@ -61,38 +80,38 @@ $(document).ready(function () {
 
 
     //Hide full table in mobiel view
-    let toggleTable = function () {
-        let windowWidth = document.body.clientWidth;
+    // let toggleTable = function () {
+    //     let windowWidth = document.body.clientWidth;
 
-        if (windowWidth < 1050) {
+    //     if (windowWidth < 1050) {
 
-            $("td:not(:nth-child(1)").hide();
+    //         $("td:not(:nth-child(3)").hide();
 
-            $('.expand-btn').click(function () {
-                $(this).closest('tr').toggleClass('.collapsed');
+    //         $('.expand-btn').click(function () {
+    //             $(this).closest('tr').toggleClass('.collapsed');
 
-                console.log(this)
+    //             console.log(this)
 
-                if ($(this).closest('tr').hasClass('.collapsed')) {
-                    $(this).closest('tr').children().slice(1).show();
-                } else {
-                    $(this).closest('tr').children().slice(1).hide()
-                }
-            });
-        } else {
-            $("td:not(:nth-child(1)").show();
-        }
+    //             if ($(this).closest('tr').hasClass('.collapsed')) {
+    //                 $(this).closest('tr').children().slice(1).show();
+    //             } else {
+    //                 $(this).closest('tr').children().slice(1).hide()
+    //             }
+    //         });
+    //     } else {
+    //         $("td:not(:nth-child(1)").show();
+    //     }
 
-    };
+    // };
 
-    $(window).resize(function () {
-        toggleTable();
-    });
+    // $(window).resize(function () {
+    //     toggleTable();
+    // });
     //Fire it when the page first loads:
-    toggleTable();
+    // toggleTable();
 
 
-    // Show and Hide top ,emu on resize 
+    // Show and Hide top menu on resize 
     $(window).on('resize', function () {
         var win = $(this); //this = window
         if (win.height() > 900) {

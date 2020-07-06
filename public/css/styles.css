@@ -1,3 +1,5 @@
+/* Hlobal styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,9 @@
 
 body {
   position: relative;
-  overflow-x: hidden
+  overflow-x: hidden;
+  min-height: 100vh;
+  clear: both
 }
 
 .container {
@@ -14,6 +18,10 @@ body {
   height: 100vh;
   background-color: #cc683c;
 }
+
+/* End of global styles */
+
+/* Banner styles */
 
 .banner {
   display: flex;
@@ -34,25 +42,7 @@ body {
   border-bottom: 2px solid #232328;
 }
 
-.form-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 500px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-.form-container h2 {
-  font-family: "Oswald", sans-serif;
-  padding-bottom: 50px;
-  color: #fff;
-  letter-spacing: 1px;
-  text-align: center;
-  font-weight: 200;
-  text-transform: uppercase;
-}
+/* End of banner styles */
 
 /* Log in form styles */
 
@@ -89,6 +79,26 @@ body {
   background-color: #cc683c;
   color: #232328;
   transform: translateY(-1px);
+}
+
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.form-container h2 {
+  font-family: "Oswald", sans-serif;
+  padding-bottom: 50px;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 200;
+  text-transform: uppercase;
 }
 
 .form-input {
@@ -145,6 +155,8 @@ body {
   color: #cc683c;
 }
 
+/* End of log in page styles */
+
 /* Register Form Styles */
 
 .register-form {
@@ -179,6 +191,8 @@ body {
   color: #232328;
   transform: translateY(-1px);
 }
+
+/* End of Registration form styles */
 
 /* Home page nav bar */
 
@@ -264,6 +278,8 @@ body {
   display: none;
 }
 
+/* End of home navbar styles */
+
 /* Ticket table styles */
 
 .home-container {
@@ -273,7 +289,7 @@ body {
   justify-content: space-evenly;
   align-content: center;
   background-color: #e5e4e2;
-  height: 100%;
+  min-height: calc(100vh - 211px - 58px);
   clear: both;
 }
 
@@ -317,14 +333,106 @@ body {
   background-color: #ffb6c1;
 }
 
-.expand-div {
-  display: flex;
-  flex-direction: row;
-}
-
 .expand-btn {
   display: none;
 }
+
+/* Add ticket page */
+
+.add-ticket-container {
+  background-color: #e5e4e2;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.add-ticket-form {
+  width: 400px;
+  height: 600px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background-color: #232328;
+  text-align: center;
+}
+
+.add-ticket-form h2 {
+  font-family: "Oswald", sans-serif;
+  padding-bottom: 50px;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.add-ticket-form input[type="text"] {
+  text-transform: uppercase;
+}
+
+.add-ticket-form input[type="submit"] {
+  display: block;
+  width: 150px;
+  padding: 8px 5px;
+  margin: 5px;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  outline: none;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-ticket-form label {
+  display: block;
+  font-size: 10px;
+  font-family: "Oswald", sans-serif;
+  margin: 5px 0;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.add-ticket-form select {
+  width: 75%;
+  margin-bottom: 10px;
+}
+
+.cancel-btn {
+  position: absolute;
+  bottom: 1%;
+  right: 2%;
+  color: #232328;
+  padding: 5px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: transform 0.3s;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.cancel-btn a {
+  text-decoration: none;
+  color: #232328;
+}
+
+/* End of tadd ticket styles */
+
+/* Add ticket styles */
 
 .add-ticket-btn button {
   position: absolute;
@@ -351,17 +459,13 @@ body {
   color: #232328;
 }
 
-/* .tocket-table {
-  width: 100%;
-  border-collapse: collapse;
-} */
+/* End of add ticket styles */
 
 .ticket-container .ticket-table {
   width: 100%;
 }
 
-.ticket-table th,
-td {
+.ticket-table th, td {
   font-family: "Oswald", sans-serif;
   padding: 10px 20px;
 }
@@ -447,28 +551,21 @@ td {
   width: 60vw;
 }
 
-/* Add ticket page */
+/* End of Graph styles */
 
-.add-ticket-container {
-  background-color: #e5e4e2;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-}
+/* Single ticket styles */
 
-.add-ticket-form {
-  width: 400px;
-  height: 600px;
+.single-ticket {
+  width: 75%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  background-color: #232328;
   text-align: center;
 }
 
-.add-ticket-form h2 {
+.single-ticket h2 {
   font-family: "Oswald", sans-serif;
   padding-bottom: 50px;
   color: #fff;
@@ -478,74 +575,54 @@ td {
   text-transform: uppercase;
 }
 
-.add-ticket-form input[type="text"] {
-  text-transform: uppercase;
-}
-
-.add-ticket-form input[type="submit"] {
-  display: block;
-  width: 150px;
-  padding: 8px 5px;
-  margin: 5px;
-  background-color: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-  border-radius: 50px;
-  outline: none;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 15px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: transform 0.3s;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.add-ticket-form label {
-  display: block;
-  font-size: 10px;
+.single-ticket p {
   font-family: "Oswald", sans-serif;
-  margin: 5px 0;
-  color: #fff;
+  font-size: 10px;
+  color: #232328;
   letter-spacing: 1px;
   text-align: center;
   font-weight: 200;
   text-transform: uppercase;
 }
 
-.add-ticket-form select {
-  width: 75%;
-  margin-bottom: 10px;
-}
-
-.cencel-btn {
-  position: absolute;
-  bottom: 1%;
-  right: 2%;
-  color: #232328;
-  padding: 5px;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 14px;
+.single-ticket label {
+  display: block;
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+  margin: 5px 0;
+  color: #cc683c;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 200;
   text-transform: uppercase;
-  transition: transform 0.3s;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  border-radius: 10px;
 }
 
-.cencel-btn a {
-  text-decoration: none;
-  color: #232328;
+.single-ticket .low-priority {
+  background-color: #ffffe0;
+  padding: 50px;
 }
+
+.single-ticket .medium-priority {
+  background-color: #ffc04d;
+  padding: 50px;
+}
+
+.single-ticket .high-priority {
+  background-color: #ffb6c1;
+  padding: 50px;
+}
+
+/* End of single ticket styles */
+
+/* Footer styles */
 
 .footer {
-  top: -1%;
+  position: relative;
+  bottom: 0;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 135px;
   background-color: #232328;
   justify-content: center;
 }
@@ -577,123 +654,130 @@ td {
 }
 
 /******************** Mobile *********************/
-@media (max-width: 350px){
-  .nav-bar .nav-options li a{
-    font-size: 15px;
+
+@media (max-width: 1050px) {
+  /* Home page with ticket and chart */
+  .home-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
   }
-}
-
-@media (max-width: 615px) {
-  /* Login and Registration page  */
-
-  .msg-container .success-msg {
-    font-size: 8px;
-    padding: 0;
-    margin: 0;
+  .msg-container .demo-msg {
+    display: none;
   }
-
-  .banner {
-    display: flex;
-    padding: 15px;
+  .add-ticket-btn button {
+    display: none;
+  }
+  .ticket-table thead tr th:nth-child(n+4) {
+    display: none;
+  }
+  .ticket-table td:nth-child(n+4) {
+    display: none;
+  }
+  .expand-div {
+    display: inline;
+  }
+  .expand-div a {
+    color: #232328;
+  }
+  .expand-btn {
+    display: block;
+    outline: none;
+    border: none;
+    font-family: "Roboto Condensed", sans-serif;
+  }
+  .show-chart-container {
+    display: none;
+  }
+  /* End of home page and chart */
+  /* Add ticket mobile page */
+  .add-ticket-form {
+    position: relative;
+    width: 40%;
+    height: 50%;
+    top: 45%;
+    left: 50%;
+    background-color: #232328;
     text-align: center;
   }
-
-  .banner img {
-    width: 0;
-  }
-
-  .banner h1 {
-    margin: auto;
-    font-size: 20px;
-  }
-
-  .form-container {
-    position: relative;
-    width: 80%;
-    height: 300px;
-    top: 150px;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-  }
-
-  .form-container h2 {
+  .add-ticket-form h2 {
     font-size: 15px;
+    padding-bottom: 10px;
   }
-
-  .form-container .form-input {
-    width: 95%;
-  }
-
-  .log-in-form{
-    height: 350px;
-    margin: auto;
-  }
-
-  .log-in-form input[type="submit"] {
-    display: block;
-    width: 50%;
-    margin: auto;
-    font-size: 12px;
-  }
-
-  .register-form {
-    position: relative;
-    height: 350px;
-  }
-
-  .register-btn {
+  .add-ticket-form .form-input {
     font-size: 10px;
   }
-
-  .register-form input[type="submit"] {
-    margin: auto;
+  .add-ticket-form input[type="text"] {
+    font-size: 12px;
+    width: 70%;
+    padding: 0px;
+    margin: 15px;
+  }
+  .add-ticket-form input[type="select"] {
+    width: 250px;
+  }
+  .add-ticket-form input[type="submit"] {
     display: block;
     width: 80px;
-    margin: auto;
+    padding: 5px;
+    margin-top: 15px;
     font-size: 12px;
   }
-
-  .register-form .form-input {
+  .add-ticket-form label {
+    font-size: 10px;
+  }
+  .add-ticket-form select {
+    width: 75%;
+    margin-bottom: 10px;
+  }
+  textarea {
+    width: 70%;
+  }
+  .cencel-btn {
     font-size: 12px;
-    padding: 0;
-    margin: 20px;
   }
-}
-
-/* Nav-bar mobile styles */
-@media (max-width: 900px) {
-  .nav-bar .ticket-logo h1 {
-    display: none;
-  }
-
-  .nav-bar .ticket-logo img {
-    display: none;
-  }
-
-  .nav-bar #top-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 20px;
-    display: none;
-  }
-
-  .nav-bar #top-nav li {
-    text-align: right;
-    text-align-last: right;
-  }
-
-  .nav-bar .dropdown-icon {
-    display: flex;
-    position: relative;
-    left: 5%;
-    font-size: 20px;
-  }
-
-  .nav-bar .dropdown-icon a {
-    color: #fff;
+  .cencel-btn a {
     text-decoration: none;
+    color: #232328;
+  }
+  /* Mobile single ticket */
+  .single-ticket {
+    position: relative;
+    top: 45%;
+    left: 50%;
+    background-color: #232328;
+    text-align: center;
+  }
+  .single-ticket h2 {
+    font-size: 15px;
+    padding-bottom: 10px;
+    color: #232328;
+  }
+  .single-ticket p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .single-ticket label {
+    font-size: 15px;
+  }
+  .single-ticket .single-ticket-btn {
+    margin-top: 15px;
+    font-size: 15;
+  }
+  /* End of mobile single ticket */
+  /* mobile footer */
+  .footer {
+    height: 200px;
+  }
+  .footer ul {
+    flex-wrap: wrap;
+  }
+  .footer ul li {
+    width: 33%;
+    font-size: 10px;
+  }
+  .footer p {
+    display: none;
   }
 }
 
@@ -703,200 +787,132 @@ td {
   }
 }
 
-@media (max-width: 1050px) {
-  /* Home page with ticket and chart */
-  .msg-container .demo-msg {
+/* Nav-bar mobile styles */
+
+@media (max-width: 900px) {
+  .nav-bar .ticket-logo h1 {
     display: none;
   }
-
-  .add-ticket-btn button {
+  .nav-bar .ticket-logo img {
     display: none;
   }
-
-  .ticket-container {
+  .nav-bar #top-nav {
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-    box-shadow: none;
-    height: 100vh;
-    padding-bottom: 860px;
-  }
-
-  .ticket-table thead {
+    margin-top: 20px;
     display: none;
   }
-
-  .ticket-table {
+  .nav-bar #top-nav li {
+    text-align: right;
+    text-align-last: right;
+  }
+  .nav-bar .dropdown-icon {
+    display: flex;
     position: relative;
-    left: 50%;
-    top: 2%;
-    transform: translateX(-25%);
+    left: 5%;
+    font-size: 20px;
   }
-
-  .ticket-table,
-  .ticket-table tbody,
-  .ticket-table tr,
-  .ticket-table td {
-    display: block;
-    width: 70%;
-  }
-  .ticket-table tr {
-    margin-bottom: 5px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  }
-
-  .ticket-table td {
-    text-align: left;
-    padding-left: 60%;
-    position: relative;
-    text-transform: uppercase;
-  }
-
-  .ticket-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 30%;
-    width: 50%;
-    font-size: 15px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  .expand-btn {
-    position: absolute;
-    display: block;
-    left: 110%;
-    padding: 5px 15px;
-    outline: none;
-    border: none;
-    border-radius: 50px;
-    font-family: "Roboto Condensed", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: #232328;
+  .nav-bar .dropdown-icon a {
     color: #fff;
-    cursor: pointer;
-  }
-
-  .expand-btn:active {
-    box-shadow: 0 0 0 white;
-    margin: 2px 0;
-  }
-
-  .expand-btn i {
-    font-size: 16px;
-  }
-
-  .show-chart-container,
-  .chart-container {
-    display: none;
-  }
-
-  /* Add ticket mobile page */
-  .add-ticket-form {
-    position: relative;
-    width: 75%;
-    height: 80%;
-    top: 45%;
-    left: 50%;
-    background-color: #232328;
-    text-align: center;
-  }
-
-  .add-ticket-form h2 {
-    font-size: 15px;
-    padding-bottom: 10px;
-  }
-
-  .add-ticket-form .form-input {
-    font-size: 10px;
-  }
-
-  .add-ticket-form input[type="text"] {
-    font-size: 12px;
-    width: 70%;
-    padding: 0px;
-    margin: 15px;
-  }
-
-  .add-ticket-form input[type="select"] {
-    width: 250px;
-  }
-
-  .add-ticket-form input[type="submit"] {
-    display: block;
-    width: 80px;
-    padding: 5px;
-    margin-top: 15px;
-    font-size: 12px;
-  }
-
-  .add-ticket-form label {
-    font-size: 10px;
-  }
-
-  .add-ticket-form select {
-    width: 75%;
-    margin-bottom: 10px;
-  }
-
-  textarea{
-    width: 70%;
-  }
-
-  .cencel-btn {
-    font-size: 12px;
-  }
-
-  .cencel-btn a {
     text-decoration: none;
-    color: #232328;
-  }
-
-  .footer ul {
-    flex-wrap: wrap;
-  }
-
-  .footer ul li {
-    width: 33%;
-    font-size: 10px;
-  }
-
-  .footer p {
-    display: none;
   }
 }
 
-@media (max-width: 400px){
-  .ticket-table tbody{
+/* Login and Registration page  */
+
+@media (max-width: 615px) {
+  .msg-container .success-msg {
+    font-size: 8px;
+    padding: 0;
+    margin: 0;
+  }
+  .banner {
+    display: flex;
+    padding: 15px;
+    text-align: center;
+  }
+  .banner img {
+    width: 0;
+  }
+  .banner h1 {
+    margin: auto;
+    font-size: 20px;
+  }
+  .form-container {
+    position: relative;
+    width: 80%;
+    height: 300px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+  .form-container h2 {
+    font-size: 15px;
+  }
+  .form-container .form-input {
+    width: 95%;
+  }
+  .log-in-form {
+    height: 350px;
+    margin: auto;
+  }
+  .log-in-form input[type="submit"] {
+    display: block;
+    width: 50%;
+    margin: auto;
+    font-size: 12px;
+  }
+  .register-form {
+    position: relative;
+    height: 350px;
+  }
+  .register-btn {
     font-size: 10px;
   }
-
-  .ticket-table td::before {
-    content: attr(data-label);
-   font-size: 10px;
+  .register-form input[type="submit"] {
+    margin: auto;
+    display: block;
+    width: 80px;
+    margin: auto;
+    font-size: 12px;
   }
+  .register-form .form-input {
+    font-size: 12px;
+    padding: 0;
+    margin: 20px;
+  }
+  .add-ticket-form {
+    width: 80%;
+    height: 50%;
+  }
+}
 
-  .expand-btn {
+/* End of Login and Registration page */
+
+/* End of navbar mobile styles */
+
+@media (max-width: 400px) {
+  .ticket-table tbody {
     font-size: 10px;
-    padding: 2px;
-    width: 20px;
-    left:100%;
   }
-
   .submit-btn {
     font-size: 10px;
     padding: 5px;
-
   }
-  
   .closed-btn {
     font-size: 10px;
     padding: 5px;
- 
   }
-  
   .delete-btn {
     font-size: 10px;
     padding: 5px;
   }
 }
 
+@media (max-width: 350px) {
+  .nav-bar .nav-options li a {
+    font-size: 15px;
+  }
+}
