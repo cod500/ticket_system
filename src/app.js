@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 app.use(
   session({
     // Key we want to keep secret which will encrypt all of our information
-    secret: process.env.SECRET,
+    secret: '218121!KGKBTMTM',
     // Should we resave our session variables if nothing has changes which we dont
     resave: false,
     // Save empty value if there is no vaue which we do not want to do
@@ -76,7 +76,7 @@ app.get('*', (req, res) => {
   res.redirect('/');
 })
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on ${port}`)
 });
