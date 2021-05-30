@@ -8,7 +8,7 @@ Short, 1-2 sentence description of what the app does and the key technologies/la
 
 #### Live project
 
-https://trouble-tickets-system.herokuapp.com/home
+https://trouble-tickets-system.herokuapp.com
 
 ## Project Status
 
