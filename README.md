@@ -1,10 +1,12 @@
 ## Trouble Ticket Management System
 
-Sample README boilerplate for personal projects.
+#### Full-Stack Web App connected to PostgreSQL database
 
-#### Your name for the project
+Node/Express(back-end) connected to PostgreSQL database. Uses EJS templating on the front end.
 
-Short, 1-2 sentence description of what the app does and the key technologies/languages you used.
+## Porpose
+
+A ticket management system allowing users to keep track of tasks submitted for completion. A graph is included to show average time of each completed ticket based on priority level. 
 
 #### Live project
 
@@ -12,7 +14,7 @@ https://trouble-tickets-system.herokuapp.com
 
 ## Project Status
 
-Only add this section if the project is incomplete.  If project is still in development, what is left to complete?
+Project is completed and live but issues are addresed when they arise. 
 
 ## Project Screen Shots
 [Screenshot 1]
