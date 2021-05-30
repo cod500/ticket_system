@@ -178,30 +178,6 @@ fetch('/chart')
     })
     .catch(error => console.error(error));
 
-class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age
-    }
-
-    greet() {
-        return `Hello ${this.name}`
-    }
-}
-
-const person1 = new Person('John', 44);
-console.log(person1.greet());
-
-class Customer extends Person {
-    constructor(name, age, balance) {
-        super(name, age);
-        this.balance = balance;
-    }
-}
-
-const customer1 = new Customer('claton', 9, 9999);
-
-console.log(customer1.age)
 
 
 

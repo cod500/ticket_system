@@ -27,47 +27,70 @@
 
             <ul class="nav-top" id="top-nav">
                 <li>
-                    <a href="/home">
-                        <i class="fa fa-ticket"></i>Home</a>
+                    <a href="/home"><i class="fa fa-ticket"></i>Home</a>
                 </li>
                 <li>
-                    <a href="/add">
-                        <i class="fa fa-plus-square"></i>Add Ticket</a>
+                    <a href="/add"><i class="fa fa-plus-square"></i>Add Ticket</a>
                 </li>
 
                 <li>
-                    <a href="#">
-                        <i class="fa fa-bell"></i>Notifications</a>
-                    <% if (user)
-            { %>
+                    <div>
+                        <% if (notifications.length > 0) { %>
+                        <a href="#infopanel" class="open_modal"><i class="fa fa-bell alert"></i>Notifications</a>
+                        <%} else { %>
+                        <a href="#infopanel" class="open_modal"><i class="fa fa-bell"></i>Notifications</a>
+                        <% } %>
+                        <% if (user)
+                    { %>
+                        <div id="infopanel" class="modal">
+                            <div class="content">
+                                <h5 class="modal-text">Notifications</h5>
+                                <br>
+                                <% for (let i = 0; i < notifications.length;  i++ ) { %>
+                                <% if (notifications[i].date_closed) { %>
+                                <div class="notifications" id="notification-<%= notifications[i].number %>">
+                                    <p><i class="fa fa-times clear-btn"
+                                            id="clear-btn-<%= notifications[i].number %>"></i>
+                                        <%= notifications[i].title %> ticket closed
+                                    </p>
+                                    <p class="hours-ago"><%= moment(notifications[i].date_closed).fromNow() %></p>
+                                    <br>
+                                </div>
+                                <%} else { %>
+                                <div class="notifications" id="notification-<%= notifications[i].number %>">
+                                    <p> <i class="fa fa-times clear-btn"
+                                            id="clear-btn-<%= notifications[i].number %>"></i>
+                                        <%= notifications[i].title %> ticket opened
+                                    </p>
+                                    <p class="hours-ago"><%= moment(notifications[i].date_added).fromNow() %></p>
+                                    <br>
+                                </div>
+                                <% } %>
+                                <% } %>
+                                <small id="clear-all">Clear all notifications</small>
+                                <div class="close"><a href="#">Close</a></div>
+                            </div>
+                        </div>
+                        </p>
+
                 </li>
-                </li>
+
                 <li>
-                    <a href="/user/logout">
-                        <i class="fa fa-sign-out"></i>Sign Out</a>
+                    <a href="/user/logout"><i class="fa fa-sign-out"></i>Sign Out</a>
                     <%} else { %>
                 </li>
 
                 <li>
-                    <a href="/">
-                        <i class="fa fa-sign-out"></i>Sign In</a>
+                    <a href="/"><i class="fa fa-sign-out"></i>Sign In</a>
                     <% } %>
                 </li>
             </ul>
 
             <ul class="nav-options">
-                <li>
-                    <a href="/home">All</a>
-                </li>
-                <li>
-                    <a href="/home?status=open">Open</a>
-                </li>
-                <li>
-                    <a href="/home?status=closed">Closed</a>
-                </li>
-                <li>
-                    <a href="/add">Add Ticket</a>
-                </li>
+                <li><a href="/home">All</a></li>
+                <li><a href="/home?status=open">Open</a></li>
+                <li><a href="/home?status=closed">Closed</a></li>
+                <li><a href="/add">Add Ticket</a></li>
             </ul>
         </nav>
 
@@ -118,7 +141,8 @@
         <li class="li">Compliance</li>
         <li class="li">Abuse Policy</li>
     </ul>
-    <p>&copy; 2020 All Rights Reserved.</p>
+    <br>
+    <p>&copy; <img src="/img/cd-logo.png" alt=""> 2021 All Rights Reserved.</p>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script src="/js/home.js"></script>

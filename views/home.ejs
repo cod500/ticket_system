@@ -35,8 +35,43 @@
         </li>
 
         <li>
-          <a href="#"><i class="fa fa-bell"></i>Notifications</a> <% if (user)
-            { %>
+          <div>
+            <% if (notifications.length > 0) { %>
+            <a href="#infopanel" class="open_modal"><i class="fa fa-bell alert"></i>Notifications</a>
+            <%} else { %>
+            <a href="#infopanel" class="open_modal"><i class="fa fa-bell"></i>Notifications</a>
+            <% } %>
+            <% if (user)
+              { %>
+            <div id="infopanel" class="modal">
+              <div class="content">
+                <h5 class="modal-text">Notifications</h5>
+                <br>
+                <% for (let i = 0; i < notifications.length;  i++ ) { %>
+                <% if (notifications[i].date_closed) { %>
+                <div class="notifications" id="notification-<%= notifications[i].number %>">
+                  <p><i class="fa fa-times clear-btn" id="clear-btn-<%= notifications[i].number %>"></i>
+                    <%= notifications[i].title %> ticket closed
+                  </p>
+                  <p class="hours-ago"><%= moment(notifications[i].date_closed).fromNow() %></p>
+                  <br>
+                </div>
+                <%} else { %>
+                <div class="notifications" id="notification-<%= notifications[i].number %>">
+                  <p> <i class="fa fa-times clear-btn" id="clear-btn-<%= notifications[i].number %>"></i>
+                    <%= notifications[i].title %> ticket opened
+                  </p>
+                  <p class="hours-ago"><%= moment(notifications[i].date_added).fromNow() %></p>
+                  <br>
+                </div>
+                <% } %>
+                <% } %>
+                <small id="clear-all">Clear all notifications</small>
+                <div class="close"><a href="#">Close</a></div>
+              </div>
+            </div>
+            </p>
+
         </li>
 
         <li>
@@ -178,7 +213,8 @@
         <li class="li">Compliance</li>
         <li class="li">Abuse Policy</li>
       </ul>
-      <p>&copy; 2020 All Rights Reserved.</p>
+      <br>
+      <p>&copy; <img src="/img/cd-logo.png" alt=""> 2021 All Rights Reserved.</p>
     </footer>
   </div>
 

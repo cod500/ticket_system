@@ -57,7 +57,6 @@ module.exports = function (passport) {
             if (err) {
                 return done(err);
             }
-            console.log(`ID is ${results.rows[0].employee_id}`);
             return done(null, results.rows[0]);
         });
     });

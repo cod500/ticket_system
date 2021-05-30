@@ -246,6 +246,13 @@ body {
   color: #fff;
 }
 
+.nav-bar ul li p {
+  text-decoration: none;
+  color: #cd5c5c;
+  ;
+  font-size: 12px;
+}
+
 .nav-bar ul li a i {
   margin-right: 5px;
 }
@@ -276,6 +283,10 @@ body {
 
 .nav-bar .dropdown-icon {
   display: none;
+}
+
+i.alert {
+  color: #cd5c5c;
 }
 
 /* End of home navbar styles */
@@ -653,6 +664,96 @@ body {
   letter-spacing: 1px;
 }
 
+.footer img {
+  width: 40px;
+  margin-bottom: -15px;
+}
+
+/******************** Modal *********************/
+
+.modal {
+  position: relative;
+  width: 0;
+  height: 0;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.modal:target {
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background 0.35s;
+}
+
+.modal:target .content {
+  background: #fff;
+  border-radius: 0.5rem;
+  /* box-shadow: rgba(255, 255, 255, 0.25) 0 0 0 0.5rem; */
+  width: 30rem;
+  padding: 2rem;
+  position: absolute;
+  top: 30%;
+  left: calc(50% - 15rem);
+  z-index: 99;
+}
+
+.modal:target .close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+}
+
+.modal:target .close a {
+  display: block;
+  height: 2rem;
+  width: 2rem;
+  text-indent: 2rem;
+  overflow: hidden;
+  background: #cc683c;
+  border-radius: 50%;
+  border: 0.125rem solid #fff;
+}
+
+.modal:target .close:after {
+  content: 'x';
+  font-weight: 800;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  line-height: 2rem;
+  width: 2rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.nav-bar ul li p.hours-ago {
+  color: #c0c0c0;
+}
+
+.modal small {
+  color: #c0c0c0;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.modal i {
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 /******************** Mobile *********************/
 
 @media (max-width: 1050px) {
@@ -803,10 +904,10 @@ body {
     margin-top: 20px;
     display: none;
   }
-  .nav-bar #top-nav li {
+  /* .nav-bar #top-nav li {
     text-align: right;
     text-align-last: right;
-  }
+  } */
   .nav-bar .dropdown-icon {
     display: flex;
     position: relative;
@@ -914,5 +1015,72 @@ body {
 @media (max-width: 350px) {
   .nav-bar .nav-options li a {
     font-size: 15px;
+  }
+}
+
+/* Modal mobile styles */
+
+@media(max-width: 515px) {
+  .modal:target .content {
+    background: #fff;
+    border-radius: 0.5rem;
+    width: 20rem;
+    padding: 2rem;
+    position: absolute;
+    top: 30%;
+    left: calc(66% - 15rem);
+    z-index: 99;
+  }
+}
+
+@media(max-width: 468px) {
+  .modal:target .content {
+    background: #fff;
+    border-radius: 0.5rem;
+    width: 20rem;
+    padding: 2rem;
+    position: absolute;
+    top: 30%;
+    left: calc(68% - 15rem);
+    z-index: 99;
+  }
+}
+
+@media(max-width: 468px) {
+  .modal:target .content {
+    background: #fff;
+    border-radius: 0.5rem;
+    width: 20rem;
+    padding: 2rem;
+    position: absolute;
+    top: 30%;
+    left: calc(69% - 15rem);
+    z-index: 99;
+  }
+}
+
+@media(max-width: 390px) {
+  .modal:target .content {
+    background: #fff;
+    border-radius: 0.5rem;
+    width: 20rem;
+    padding: 2rem;
+    position: absolute;
+    top: 30%;
+    left: calc(70% - 15rem);
+    z-index: 99;
+  }
+}
+
+@media(max-width: 370px) {
+  .modal:target .content {
+    background: #fff;
+    border-radius: 0.5rem;
+    width: 20rem;
+    padding: 2rem;
+    position: absolute;
+    top: 30%;
+    left: calc(72% - 15rem);
+    z-index: 99;
   }
 }

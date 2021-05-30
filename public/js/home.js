@@ -2,7 +2,8 @@ $(document).ready(function () {
 
     let deleteBtns = document.querySelectorAll('.delete-btn');
     let submitBtns = document.querySelectorAll('.submit-btn');
-
+    let clearBtns = document.querySelectorAll('.clear-btn');
+    let clearAll = document.getElementById('clear-all');
 
     // Loops through .delete-btn class to delete row clicked
     deleteBtns.forEach(function (btn) {
@@ -44,7 +45,7 @@ $(document).ready(function () {
         });
     });
 
-    //Confirms submite and send data via ajax
+    //Confirms submit and send data via ajax
     submitBtns.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             let row = e.target.id.substr(11, 5);
@@ -52,7 +53,7 @@ $(document).ready(function () {
             document.getElementById(e.target.id).style.cssText = "background-color: #C0C0C0";
             document.getElementById(e.target.id).innerHTML = 'Closed';
 
-            // Send post request to delete specific ticket from row
+            // Send post request to submit specific ticket in row
             $.ajax({
                 type: "PUT",
                 url: "/submit/" + row,
@@ -62,6 +63,48 @@ $(document).ready(function () {
                     console.log("Callback done!");
                 }
             });
+        });
+    });
+
+    // Clears each clicked notification in modal by lopping through buttons
+    // Loops through .delete-btn class to delete row clicked
+    clearBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            let row = e.target.id.substr(10);
+            console.log(row)
+
+            document.getElementById(`notification-${row}`).remove();
+
+            // Send delete request to delete specific ticket from row
+            $.ajax({
+                type: "DELETE",
+                url: "/delete/notification/" + row,
+                dataType: "json",
+                data: { delete: row },
+                success: function (res) {
+                    console.log("Callback done!", res);
+                }
+            });
+
+        });
+    });
+
+    //Clear all notifications and delete from databate
+    clearAll.addEventListener('click', function (e) {
+        clearBtns.forEach(function (btn) {
+            let row = btn.id.substr(10);
+            console.log(row)
+            document.getElementById(`notification-${row}`).remove()
+        });
+        this.remove();
+
+        // Send delete request to delete all notifications
+        $.ajax({
+            type: "DELETE",
+            url: "/notifications/delete",
+            success: function (res) {
+                console.log("Callback done!", res);
+            }
         });
     });
 
@@ -76,6 +119,7 @@ $(document).ready(function () {
         $('.show-chart-container p').html() == "Show Proficiency Chart" ? $('.show-chart-container p').html('Hide Chart') :
             $('.show-chart-container p').html("Show Proficiency Chart");
     });
+
 
 
 
