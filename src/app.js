@@ -13,6 +13,7 @@ const passport = require('passport');
 const homeRoute = require('./routes/index');
 const ticketRoute = require('./routes/tickets');
 const userRoute = require('./routes/users');
+const notificationRoute = require('./routes/notfications.js');
 
 //init exprss app
 const app = express();
@@ -70,6 +71,7 @@ app.use(function (req, res, next) {
 //routes
 app.use(homeRoute);
 app.use(ticketRoute);
+app.use(notificationRoute);
 app.use(userRoute);
 
 app.get('*', (req, res) => {
