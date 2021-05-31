@@ -12,6 +12,8 @@ A ticket management system allowing users to keep track of tasks submitted for c
 
 https://trouble-tickets-system.herokuapp.com
 
+Create an account to see full features. 
+
 ## Project Status
 
 Project is completed and live but issues are addresed when they arise. 
@@ -19,22 +21,17 @@ Project is completed and live but issues are addresed when they arise.
 ## Project Screen Shots
 ![alt tag](https://cdn-images.imagevenue.com/f6/73/3b/ME13FQZ0_o.png)
 
-[Screenshot 2]
-
 ## Reflection
 
-Add a few paragraphs with a full description of the product's journey, including:
+- I could not find a task tracker that had the features that I wanted such as how long it took me to solve each problem so i decided to create my own. It turned out to be a fantastic learning experience with technologies I have only sparingly used before such as EJS, and the PostgreSQL.
 
--How long this project took
+- I used 100% CSS of my own with no help from thrid party libraries for styling or responsiveness. JQuery was slightly used with Ajax calls. 
 
--Purpose of the project (Was this app meant to solve a problem? Was this a side project to get a better handle on a programming concept?)
+- I had some challenges with styling for mobile devices and the creating of the notifiation feature. The notification uses logic through EJS to load new tickets and submitted tickets rendered through the get request on the home page. Getting the notification icon to turn red on new tickets and back to white when they were cleared to some trial and error. 
 
--Whether you worked with a group and what it was like
-
--Being honest about obstacles/challenges you faced and how you overcame them.  We all have challenges when we're learning something new!
-
--Bulleted list with other key learnings:
-
-    * Learning 1
-    * Learning 1
-    * Learning 1
+-Several technologies I learn and practiced with:
+   - Node.js
+   - REST APIs
+   - EJS
+   - PostgreSQL
+   - Passport
