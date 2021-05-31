@@ -17,7 +17,7 @@ https://trouble-tickets-system.herokuapp.com
 Project is completed and live but issues are addresed when they arise. 
 
 ## Project Screen Shots
-[Screenshot 1]
+![alt tag](https://cdn-images.imagevenue.com/f6/73/3b/ME13FQZ0_o.png)
 
 [Screenshot 2]
 
